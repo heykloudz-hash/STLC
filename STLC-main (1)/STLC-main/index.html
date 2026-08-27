@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MakeAdish — recipes made from what you have." />
+    <title>MakeAdish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" data-route="home"><span class="brand-mark">✦</span> Make<span>Adish</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#discover" data-route="discover">Discover</a>
+        <a href="#saved" class="saved-link" data-route="saved">Saved <span id="saved-count">0</span></a>
+      </nav>
+      <button class="menu-button" id="menu-button" aria-label="Open menu" aria-controls="header-menu" aria-expanded="false"><span class="hamburger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <nav class="header-menu" id="header-menu" aria-label="Menu navigation">
+        <a href="#home" data-route="home">Home</a>
+        <a href="#discover" data-route="discover">Discover recipes</a>
+        <a href="#saved" data-route="saved">Saved recipes <span id="menu-saved-count">0</span></a>
+      </nav>
+    </header>
+    <button class="menu-scrim" id="menu-scrim" aria-label="Close menu"></button>
+    <main>
+      <section id="home" class="view active home-view">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR AI SOUS-CHEF</p>
+          <h1>Make something<br /><em>wonderful</em> tonight.</h1>
+          <p class="lede">Tell us what is in your kitchen, and we’ll turn the ingredients you already have into a meal worth gathering around.</p>
+          <form class="prompt-bar" id="home-prompt">
+            <span aria-hidden="true">✦</span>
+            <input aria-label="Describe what you have" placeholder="I have chicken, lemons, and some herbs..." />
+            <button type="submit">Create a recipe <span>→</span></button>
+          </form>
+          <p class="helper">Try: “a quick vegetarian dinner for two”</p>
+        </div>
+        <div class="hero-image image-card">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1050&q=85" alt="A colorful fresh vegetable meal" />
+          <div class="image-caption"><span>Tonight’s inspiration</span><strong>Spring market supper</strong></div>
+        </div>
+        <section class="quick-start">
+          <p class="eyebrow">START WITH A MOOD</p>
+          <div class="mood-grid">
+            <button data-prompt="A quick dinner in under 30 minutes"><span>◷</span> Quick & easy</button>
+            <button data-prompt="A cozy comfort food dinner"><span>⌂</span> Cozy comfort</button>
+            <button data-prompt="A bright, healthy meal"><span>♡</span> Bright & healthy</button>
+            <button data-prompt="A meal to share with friends"><span>✦</span> Something special</button>
+          </div>
+        </section>
+
+      <section id="pantry" class="home-pantry">
+        <div class="page-intro"><p class="eyebrow">YOUR KITCHEN, YOUR WAY</p><h2>What’s in your fridge?</h2><p>List a few ingredients and we’ll find their best next chapter.</p></div>
+        <div class="pantry-layout">
+          <div class="ingredient-panel">
+            <div class="panel-label"><label for="ingredient-input">Add ingredients</label><span class="photo-hint">or scan your groceries</span></div>
+            <div class="add-ingredient"><input id="ingredient-input" placeholder="e.g. cherry tomatoes" /><button id="add-ingredient" aria-label="Add ingredient">+</button><button class="photo-action" id="open-photo" type="button" aria-label="Take a photo of ingredients"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.4-2h7.2l1.4 2h3A1.5 1.5 0 0 1 21.5 9v9.5A1.5 1.5 0 0 1 20 20H4a1.5 1.5 0 0 1-1.5-1.5V9A1.5 1.5 0 0 1 4 7.5Z"/><circle cx="12" cy="13.5" r="3.5"/></svg><span>Take a photo</span></button></div>
+            <div class="ingredients" id="ingredients"></div>
+            <div class="suggestions"><p>COMMONLY ON HAND</p><button>Eggs</button><button>Garlic</button><button>Rice</button><button>Parmesan</button><button>Spinach</button></div>
+            <button class="primary wide" id="find-recipes">Find recipes <span>→</span></button>
+          </div>
+          <aside class="pantry-note"><span class="note-spark">✦</span><h3>No perfect pantry required.</h3><p>A handful of ingredients is plenty. We’ll suggest smart swaps for anything missing.</p><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80" alt="Pasta dish with fresh herbs" /></aside>
+        </div>
+      </section>
+      </section>
+
+      <section id="discover" class="view discover-view">
+        <div class="discover-top"><div><p class="eyebrow">MADE FOR YOUR KITCHEN</p><h2>Recipe discoveries</h2><p id="discovery-description">A few beautiful ways to use what you have.</p></div><button class="secondary" data-scroll="pantry">Edit pantry</button></div>
+        <div class="filters"><button class="filter active">All recipes</button><button class="filter">Under 30 min</button><button class="filter">Vegetarian</button><button class="filter">One pan</button></div>
+        <div class="recipe-grid" id="recipe-grid"></div>
+      </section>
+
+      <section id="saved" class="view saved-view">
+        <div class="page-intro"><p class="eyebrow">YOUR COLLECTION</p><h2>Saved recipes</h2><p>Keep the dishes you want to make close at hand.</p></div>
+        <div id="saved-recipes" class="recipe-grid saved-recipe-grid"></div>
+      </section>
+
+      <section id="recipe" class="view recipe-view">
+        <button class="back" data-route="discover">← Back to discoveries</button>
+        <div class="recipe-hero"><div class="recipe-title"><p class="eyebrow">WEEKDAY FAVORITE</p><h2 id="detail-title">Herb-crusted salmon</h2><p id="detail-summary">A bright, crisp-topped salmon dinner with tender greens and a lemony finish.</p><div class="recipe-meta"><span>◷ <b id="detail-time">30 min</b></span><span>♨ <b>Easy</b></span><span>◉ <b>2 servings</b></span></div><button class="save-button" id="save-recipe">♡ Save recipe</button></div><img id="detail-image" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1200&q=85" alt="Herb crusted salmon" /></div>
+        <div class="recipe-content"><section class="ingredients-list"><h3>Ingredients</h3><p class="servings">for 2 servings</p><div id="ingredient-list"></div></section><section class="method"><div class="method-heading"><div><h3>Method</h3><p>Take it one delicious step at a time.</p></div><button class="cook-mode" id="cook-mode">Start cooking mode</button></div><ol id="method-list"></ol></section></div>
+      </section>
+    </main>
+    <div class="modal-backdrop" id="photo-modal" aria-hidden="true"><section class="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-title"><button class="close-modal" id="close-photo" aria-label="Close photo scanner">×</button><p class="eyebrow">CHATGPT PHOTO PANTRY</p><h2 id="photo-title">Show us what you have.</h2><p class="modal-intro">Take a photo of your ingredients or upload one from your kitchen. ChatGPT will identify what it can see, estimate amounts, and suggest a dish.</p><label class="photo-dropzone" id="photo-dropzone" for="photo-input"><input id="photo-input" type="file" accept="image/*" capture="environment" /><span class="upload-icon">⌁</span><strong>Take or upload a photo</strong><small>JPG, PNG, or WEBP</small><img id="photo-preview" alt="Your pantry photo preview" /></label><button class="primary wide" id="analyze-photo" disabled>Ask ChatGPT to analyze <span>→</span></button><p class="vision-note">For best results, place ingredients in good light with labels facing up.</p></section></div>
+    <div class="modal-backdrop" id="results-modal" aria-hidden="true"><section class="photo-modal results-modal" role="dialog" aria-modal="true" aria-labelledby="results-title"><button class="close-modal" id="close-results" aria-label="Close scan results">×</button><p class="eyebrow">CHATGPT PHOTO PANTRY</p><h2 id="results-title">Here’s what we found.</h2><p class="modal-intro">Check the estimates, adjust anything that looks off, then add these to your pantry.</p><div class="dish-recommendation" id="dish-recommendation" hidden><span class="dish-label">MAKE THIS TONIGHT</span><h3 id="dish-name"></h3><p id="dish-description"></p><p class="dish-reason" id="dish-reason"></p><p class="missing-ingredients" id="missing-ingredients"></p></div><div id="scan-results" class="scan-results"></div><button class="primary wide" id="add-scan-results">Add to pantry & find recipes <span>→</span></button></section></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
